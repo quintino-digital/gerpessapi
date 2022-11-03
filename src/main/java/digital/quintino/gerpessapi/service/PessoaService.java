@@ -21,5 +21,9 @@ public class PessoaService {
 	public List<PessoaDomain> findAll() {
 		return this.pessoaRepository.findAll();
 	}
+	
+	public PessoaDomain findOne(Long codigo) {
+		return this.pessoaRepository.findById(codigo).get();
+	}
 
 }
