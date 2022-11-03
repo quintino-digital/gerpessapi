@@ -25,5 +25,9 @@ public class PessoaService {
 	public PessoaDomain findOne(Long codigo) {
 		return this.pessoaRepository.findById(codigo).get();
 	}
+	
+	public List<PessoaDomain> recuperarPessoaJuridica() {
+		return this.pessoaRepository.findByTipoPessoaDomainCodigo(2L);
+	}
 
 }
