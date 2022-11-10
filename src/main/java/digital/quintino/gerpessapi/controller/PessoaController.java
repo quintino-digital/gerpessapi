@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import digital.quintino.gerpessapi.service.PessoaService;
 
 @RestController
 @RequestMapping("/api/v1/pessoa")
+@CrossOrigin(origins = "*")
 public class PessoaController {
 	
 	@Autowired
@@ -26,6 +28,11 @@ public class PessoaController {
 	@PostMapping
 	public PessoaDomain saveOne(@RequestBody PessoaDomain pessoaDomain) {
 		return this.pessoaService.saveOne(pessoaDomain);
+	}
+	
+	@PostMapping("all")
+	public List<PessoaDomain> saveAll(@RequestBody List<PessoaDomain> pessoaDomainList) {
+		return this.pessoaService.saveAll(pessoaDomainList);
 	}
 	
 	@GetMapping
