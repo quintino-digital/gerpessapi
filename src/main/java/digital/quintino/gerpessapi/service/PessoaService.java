@@ -18,6 +18,10 @@ public class PessoaService {
 		return this.pessoaRepository.save(pessoaDomain);
 	}
 	
+	public List<PessoaDomain> saveAll(List<PessoaDomain> pessoaDomainList) {
+		return this.pessoaRepository.saveAll(pessoaDomainList);
+	}
+	
 	public List<PessoaDomain> findAll() {
 		return this.pessoaRepository.findAll();
 	}
