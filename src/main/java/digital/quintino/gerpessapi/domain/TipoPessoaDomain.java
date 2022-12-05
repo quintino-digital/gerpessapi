@@ -20,7 +20,7 @@ public class TipoPessoaDomain implements Serializable {
 	@Column(name = "CODIGO")
 	private Long codigo;
 	
-	@Column(name = "DESCRICAO")
+	@Column(name = "DESCRICAO", unique = true)
 	private String descricao;
 	
 	public TipoPessoaDomain() { }
