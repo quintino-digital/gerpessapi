@@ -3,6 +3,8 @@ create table if not exists tb_estado (
     codigo bigint not null auto_increment, 
     id_pais bigint,
     nome varchar(255) unique,
+    sigla varchar(255) unique,
+    ddd varchar(255) unique,
     primary key (codigo)
 ) engine = InnoDB;
 

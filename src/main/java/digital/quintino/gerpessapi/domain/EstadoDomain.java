@@ -29,6 +29,12 @@ public class EstadoDomain implements Serializable {
 	@Column(name = "NOME", unique = true, nullable = false)
 	private String nome;
 	
+	@Column(name = "SIGLA", length = 2, unique = true, nullable = false)
+	private String sigla;
+	
+	@Column(name = "DDD", unique = true)
+	private String ddd;
+	
 	public EstadoDomain() { }
 
 	public Long getCodigo() {
@@ -53,6 +59,22 @@ public class EstadoDomain implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getSigla() {
+		return sigla;
+	}
+
+	public void setSigla(String sigla) {
+		this.sigla = sigla;
+	}
+
+	public String getDdd() {
+		return ddd;
+	}
+
+	public void setDdd(String ddd) {
+		this.ddd = ddd;
 	}
 
 }
