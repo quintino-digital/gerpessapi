@@ -26,7 +26,7 @@ public class CidadeDomain implements Serializable {
 	@JoinColumn(name = "ID_ESTADO")
 	private EstadoDomain estadoDomain;
 	
-	@Column(name = "NOME", unique = true, nullable = false)
+	@Column(name = "NOME", nullable = false)
 	private String nome;
 	
 	public CidadeDomain() { }
