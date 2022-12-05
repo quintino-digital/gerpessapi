@@ -18,8 +18,35 @@ public class PessoaService {
 		return this.pessoaRepository.save(pessoaDomain);
 	}
 	
+	public List<PessoaDomain> saveAll(List<PessoaDomain> pessoaDomainList) {
+		return this.pessoaRepository.saveAll(pessoaDomainList);
+	}
+	
 	public List<PessoaDomain> findAll() {
 		return this.pessoaRepository.findAll();
 	}
-
+	
+	// TODO -- Tratar Exception para registros nao encontrados
+	public PessoaDomain findOne(Long codigo) {
+		return this.pessoaRepository.findById(codigo).get();
+	}
+	
+	public List<PessoaDomain> recuperarPessoaJuridica() {
+		return this.pessoaRepository.findByTipoPessoaDomainCodigo(2L);
+	}
+	
+	public PessoaDomain updateOne(PessoaDomain pessoaDomain, Long codigo) {
+		PessoaDomain pessoaDomainAntiga = this.findOne(codigo);
+			pessoaDomainAntiga.setNome(pessoaDomain.getNome());
+			pessoaDomainAntiga.setTipoPessoaDomain(pessoaDomain.getTipoPessoaDomain());
+		return this.pessoaRepository.save(pessoaDomainAntiga);
+	}
+	
+	public void deleteOne(Long codigo) {
+		PessoaDomain pessoaDomain = this.findOne(codigo);
+		if(pessoaDomain != null) {
+			this.pessoaRepository.deleteById(codigo);
+		}
+	}
+	
 }
