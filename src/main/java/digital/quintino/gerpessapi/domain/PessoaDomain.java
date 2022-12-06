@@ -1,11 +1,11 @@
 package digital.quintino.gerpessapi.domain;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -20,9 +20,9 @@ public class PessoaDomain implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	@Column(name = "CODIGO")
-	private Long codigo;
+	private UUID codigo;
 	
 	@JsonProperty("tipoPessoa")
 	@OneToOne
@@ -34,11 +34,11 @@ public class PessoaDomain implements Serializable {
 	
 	public PessoaDomain() { }
 
-	public Long getCodigo() {
+	public UUID getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Long codigo) {
+	public void setCodigo(UUID codigo) {
 		this.codigo = codigo;
 	}
 

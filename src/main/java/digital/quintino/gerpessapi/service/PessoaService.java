@@ -1,6 +1,7 @@
 package digital.quintino.gerpessapi.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,22 +28,22 @@ public class PessoaService {
 	}
 	
 	// TODO -- Tratar Exception para registros nao encontrados
-	public PessoaDomain findOne(Long codigo) {
+	public PessoaDomain findOne(UUID codigo) {
 		return this.pessoaRepository.findById(codigo).get();
 	}
 	
 	public List<PessoaDomain> recuperarPessoaJuridica() {
-		return this.pessoaRepository.findByTipoPessoaDomainCodigo(2L);
+		return this.pessoaRepository.findByTipoPessoaDomainCodigo(UUID.fromString("8e657aa1-ee2f-4ad3-9600-9f477c4ea6b8"));
 	}
 	
-	public PessoaDomain updateOne(PessoaDomain pessoaDomain, Long codigo) {
+	public PessoaDomain updateOne(PessoaDomain pessoaDomain, UUID codigo) {
 		PessoaDomain pessoaDomainAntiga = this.findOne(codigo);
 			pessoaDomainAntiga.setNome(pessoaDomain.getNome());
 			pessoaDomainAntiga.setTipoPessoaDomain(pessoaDomain.getTipoPessoaDomain());
 		return this.pessoaRepository.save(pessoaDomainAntiga);
 	}
 	
-	public void deleteOne(Long codigo) {
+	public void deleteOne(UUID codigo) {
 		PessoaDomain pessoaDomain = this.findOne(codigo);
 		if(pessoaDomain != null) {
 			this.pessoaRepository.deleteById(codigo);
