@@ -60,3 +60,11 @@ alter table tb_cidade change uf id_estado bigint;
 -- Remover Coluna
 alter table tb_cidade drop column ibge;
 
+-- Teste
+
+/*
+	Criar Pessoa
+	Criar Endereço
+	Associar Pessoa com Endereços
+*/
+
