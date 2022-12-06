@@ -33,7 +33,7 @@ public class PessoaService {
 	}
 	
 	public List<PessoaDomain> recuperarPessoaJuridica() {
-		return this.pessoaRepository.findByTipoPessoaDomainCodigo(UUID.fromString("8e657aa1-ee2f-4ad3-9600-9f477c4ea6b8"));
+		return this.pessoaRepository.findByTipoPessoaDomainCodigo(2L);
 	}
 	
 	public PessoaDomain updateOne(PessoaDomain pessoaDomain, UUID codigo) {

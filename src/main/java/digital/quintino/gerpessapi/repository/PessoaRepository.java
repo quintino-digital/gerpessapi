@@ -10,5 +10,6 @@ import digital.quintino.gerpessapi.domain.PessoaDomain;
 
 @Repository
 public interface PessoaRepository extends JpaRepository<PessoaDomain, UUID> { 
-	public List<PessoaDomain> findByTipoPessoaDomainCodigo(UUID codigo);
+	public List<PessoaDomain> findByTipoPessoaDomainCodigo(Long codigo);
+	public PessoaDomain findByCodigo(UUID codigo);
 }

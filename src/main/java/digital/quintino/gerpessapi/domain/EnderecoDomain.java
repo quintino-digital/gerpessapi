@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name = "TB_ENDERECO")
 public class EnderecoDomain implements Serializable {
@@ -23,14 +25,17 @@ public class EnderecoDomain implements Serializable {
 	@Column(name = "CODIGO")
 	private Long codigo;
 	
+	@JsonProperty("tipo")
 	@OneToOne
 	@JoinColumn(name = "ID_TIPO_ENDERECO", nullable = false)
 	private TipoEnderecoDomain tipoEnderecoDomain;
 	
+	@JsonProperty("cidade")
 	@ManyToOne
 	@JoinColumn(name = "ID_CIDADE", nullable = false)
 	private CidadeDomain cidadeDomain;
 	
+	@JsonProperty("pessoa")
 	@ManyToOne
 	@JoinColumn(name = "ID_PESSOA", nullable = false)
 	private PessoaDomain pessoaDomain;
