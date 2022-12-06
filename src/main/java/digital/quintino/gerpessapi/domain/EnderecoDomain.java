@@ -31,6 +31,10 @@ public class EnderecoDomain implements Serializable {
 	@JoinColumn(name = "ID_CIDADE", nullable = false)
 	private CidadeDomain cidadeDomain;
 	
+	@ManyToOne
+	@JoinColumn(name = "ID_PESSOA", nullable = false)
+	private PessoaDomain pessoaDomain;
+	
 	@Column(name = "LOGRADOURO", nullable = false)
 	private String logradouro;
 	
@@ -105,6 +109,30 @@ public class EnderecoDomain implements Serializable {
 
 	public void seteAtivo(Boolean eAtivo) {
 		this.eAtivo = eAtivo;
+	}
+
+	public TipoEnderecoDomain getTipoEnderecoDomain() {
+		return tipoEnderecoDomain;
+	}
+
+	public void setTipoEnderecoDomain(TipoEnderecoDomain tipoEnderecoDomain) {
+		this.tipoEnderecoDomain = tipoEnderecoDomain;
+	}
+
+	public CidadeDomain getCidadeDomain() {
+		return cidadeDomain;
+	}
+
+	public void setCidadeDomain(CidadeDomain cidadeDomain) {
+		this.cidadeDomain = cidadeDomain;
+	}
+
+	public PessoaDomain getPessoaDomain() {
+		return pessoaDomain;
+	}
+
+	public void setPessoaDomain(PessoaDomain pessoaDomain) {
+		this.pessoaDomain = pessoaDomain;
 	}
 
 }

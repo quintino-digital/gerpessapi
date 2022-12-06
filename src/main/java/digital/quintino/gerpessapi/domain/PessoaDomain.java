@@ -29,7 +29,7 @@ public class PessoaDomain implements Serializable {
 	@JoinColumn(name = "ID_TIPO_PESSOA")
 	private TipoPessoaDomain tipoPessoaDomain;
 	
-	@Column(name = "NOME")
+	@Column(name = "NOME", unique = true, nullable = false)
 	private String nome;
 	
 	public PessoaDomain() { }
