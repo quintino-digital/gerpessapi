@@ -1,0 +1,2 @@
+insert into tb_pessoa (codigo, id_tipo_pessoa, nome) values ('8e657aa1-ee2f-4ad3-9600-9f477c4ea6b8', 1, 'José Quintino'); 
+insert into tb_pessoa (codigo, id_tipo_pessoa, nome) values ('6c76b6b0-b388-45da-81db-b364cb05759b', 1, 'Priscilla Mariano');
