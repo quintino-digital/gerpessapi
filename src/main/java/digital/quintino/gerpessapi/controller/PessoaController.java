@@ -1,7 +1,6 @@
 package digital.quintino.gerpessapi.controller;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +42,7 @@ public class PessoaController {
 	}
 	
 	@GetMapping("/{codigo}")
-	public PessoaDomain findOne(@PathVariable("codigo") UUID codigo) {
+	public PessoaDomain findOne(@PathVariable("codigo") Long codigo) {
 		return this.pessoaService.findOne(codigo);
 	}
 	
@@ -53,12 +52,12 @@ public class PessoaController {
 	}
 	
 	@PutMapping("{codigo}")
-	public ResponseEntity<PessoaDomain> updateOne(@RequestBody PessoaDomain pessoaDomain, @PathVariable("codigo") UUID codigo) {
+	public ResponseEntity<PessoaDomain> updateOne(@RequestBody PessoaDomain pessoaDomain, @PathVariable("codigo") Long codigo) {
 		return ResponseEntity.ok(this.pessoaService.updateOne(pessoaDomain, codigo));
 	}
 	
 	@DeleteMapping("{codigo}")
-	public ResponseEntity<?> depeteOne(@PathVariable("codigo") UUID codigo) {
+	public ResponseEntity<?> depeteOne(@PathVariable("codigo") Long codigo) {
 		this.pessoaService.deleteOne(codigo);
 		return ResponseEntity.ok().build();
 	}

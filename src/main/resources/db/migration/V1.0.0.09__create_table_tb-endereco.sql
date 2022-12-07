@@ -3,7 +3,7 @@ create table if not exists tb_endereco (
     codigo bigint not null auto_increment,
     id_tipo_endereco bigint,
     id_cidade bigint,
-    id_pessoa binary(255) not null,
+    id_pessoa bigint not null,
     logradouro varchar(255) not null,
     complemento varchar(255),
     numero varchar(255) not null, 
