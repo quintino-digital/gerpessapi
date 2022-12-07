@@ -11,7 +11,7 @@ import digital.quintino.gerpessapi.domain.PessoaDomain;
 import digital.quintino.gerpessapi.domain.TipoEnderecoDomain;
 import digital.quintino.gerpessapi.repository.CidadeRepository;
 import digital.quintino.gerpessapi.repository.EnderecoRepository;
-import digital.quintino.gerpessapi.repository.PessoaImplementacaoRepository;
+import digital.quintino.gerpessapi.repository.PessoaRepository;
 import digital.quintino.gerpessapi.repository.TipoEnderecoRepository;
 
 @Service
@@ -27,7 +27,7 @@ public class EnderecoService {
 	private TipoEnderecoRepository tipoEnderecoRepository;
 	
 	@Autowired
-	private PessoaImplementacaoRepository pessoaImplementacaoRepository;
+	private PessoaRepository pessoaRepository;
 	
 	public EnderecoDomain saveOne(EnderecoDomain enderecoDomain) {
 		return this.enderecoRepository.save(this.configurarEndereco(enderecoDomain));
@@ -44,7 +44,7 @@ public class EnderecoService {
 	private EnderecoDomain configurarEndereco(EnderecoDomain enderecoDomain) {
 		CidadeDomain cidadeDomain = this.cidadeRepository.findById(enderecoDomain.getCidadeDomain().getCodigo()).get();
 		TipoEnderecoDomain tipoEnderecoDomain = this.tipoEnderecoRepository.findById(enderecoDomain.getTipoEnderecoDomain().getCodigo()).get();
-		PessoaDomain pessoaDomain = this.pessoaImplementacaoRepository.recuperarPessoa(enderecoDomain.getPessoaDomain().getCodigo());
+		PessoaDomain pessoaDomain = this.pessoaRepository.findById(enderecoDomain.getPessoaDomain().getCodigo()).get();
 			enderecoDomain.setTipoEnderecoDomain(tipoEnderecoDomain);
 			enderecoDomain.setCidadeDomain(cidadeDomain);
 			enderecoDomain.setPessoaDomain(pessoaDomain);
