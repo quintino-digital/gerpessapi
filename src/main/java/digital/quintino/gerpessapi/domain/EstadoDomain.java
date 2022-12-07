@@ -8,14 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 @Entity
-@Table(name = "TB_PESSOA")
-public class PessoaDomain implements Serializable {
+@Table(name = "TB_ESTADO")
+public class EstadoDomain implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -24,15 +22,20 @@ public class PessoaDomain implements Serializable {
 	@Column(name = "CODIGO")
 	private Long codigo;
 	
-	@JsonProperty("tipoPessoa")
-	@OneToOne
-	@JoinColumn(name = "ID_TIPO_PESSOA")
-	private TipoPessoaDomain tipoPessoaDomain;
+	@ManyToOne
+	@JoinColumn(name = "ID_PAIS")
+	private PaisDomain paisDomain;
 	
 	@Column(name = "NOME", unique = true, nullable = false)
 	private String nome;
 	
-	public PessoaDomain() { }
+	@Column(name = "SIGLA", length = 2, unique = true, nullable = false)
+	private String sigla;
+	
+	@Column(name = "DDD", unique = true)
+	private String ddd;
+	
+	public EstadoDomain() { }
 
 	public Long getCodigo() {
 		return codigo;
@@ -42,12 +45,12 @@ public class PessoaDomain implements Serializable {
 		this.codigo = codigo;
 	}
 
-	public TipoPessoaDomain getTipoPessoaDomain() {
-		return tipoPessoaDomain;
+	public PaisDomain getPaisDomain() {
+		return paisDomain;
 	}
 
-	public void setTipoPessoaDomain(TipoPessoaDomain tipoPessoaDomain) {
-		this.tipoPessoaDomain = tipoPessoaDomain;
+	public void setPaisDomain(PaisDomain paisDomain) {
+		this.paisDomain = paisDomain;
 	}
 
 	public String getNome() {
@@ -56,6 +59,22 @@ public class PessoaDomain implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getSigla() {
+		return sigla;
+	}
+
+	public void setSigla(String sigla) {
+		this.sigla = sigla;
+	}
+
+	public String getDdd() {
+		return ddd;
+	}
+
+	public void setDdd(String ddd) {
+		this.ddd = ddd;
 	}
 
 }

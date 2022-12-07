@@ -8,14 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 @Entity
-@Table(name = "TB_PESSOA")
-public class PessoaDomain implements Serializable {
+@Table(name = "TB_CIDADE")
+public class CidadeDomain implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -24,15 +22,14 @@ public class PessoaDomain implements Serializable {
 	@Column(name = "CODIGO")
 	private Long codigo;
 	
-	@JsonProperty("tipoPessoa")
-	@OneToOne
-	@JoinColumn(name = "ID_TIPO_PESSOA")
-	private TipoPessoaDomain tipoPessoaDomain;
+	@ManyToOne
+	@JoinColumn(name = "ID_ESTADO")
+	private EstadoDomain estadoDomain;
 	
-	@Column(name = "NOME", unique = true, nullable = false)
+	@Column(name = "NOME", nullable = false)
 	private String nome;
 	
-	public PessoaDomain() { }
+	public CidadeDomain() { }
 
 	public Long getCodigo() {
 		return codigo;
@@ -42,12 +39,12 @@ public class PessoaDomain implements Serializable {
 		this.codigo = codigo;
 	}
 
-	public TipoPessoaDomain getTipoPessoaDomain() {
-		return tipoPessoaDomain;
+	public EstadoDomain getEstadoDomain() {
+		return estadoDomain;
 	}
 
-	public void setTipoPessoaDomain(TipoPessoaDomain tipoPessoaDomain) {
-		this.tipoPessoaDomain = tipoPessoaDomain;
+	public void setEstadoDomain(EstadoDomain estadoDomain) {
+		this.estadoDomain = estadoDomain;
 	}
 
 	public String getNome() {

@@ -7,15 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 @Entity
-@Table(name = "TB_PESSOA")
-public class PessoaDomain implements Serializable {
+@Table(name = "TB_PAIS")
+public class PaisDomain implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -24,15 +20,13 @@ public class PessoaDomain implements Serializable {
 	@Column(name = "CODIGO")
 	private Long codigo;
 	
-	@JsonProperty("tipoPessoa")
-	@OneToOne
-	@JoinColumn(name = "ID_TIPO_PESSOA")
-	private TipoPessoaDomain tipoPessoaDomain;
-	
 	@Column(name = "NOME", unique = true, nullable = false)
 	private String nome;
 	
-	public PessoaDomain() { }
+	@Column(name = "SIGLA", unique = true, nullable = false)
+	private String sigla;
+	
+	public PaisDomain() { }
 
 	public Long getCodigo() {
 		return codigo;
@@ -42,20 +36,20 @@ public class PessoaDomain implements Serializable {
 		this.codigo = codigo;
 	}
 
-	public TipoPessoaDomain getTipoPessoaDomain() {
-		return tipoPessoaDomain;
-	}
-
-	public void setTipoPessoaDomain(TipoPessoaDomain tipoPessoaDomain) {
-		this.tipoPessoaDomain = tipoPessoaDomain;
-	}
-
 	public String getNome() {
 		return nome;
 	}
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getSigla() {
+		return sigla;
+	}
+
+	public void setSigla(String sigla) {
+		this.sigla = sigla;
 	}
 
 }
